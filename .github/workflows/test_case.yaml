@@ -2,8 +2,8 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  release:
-    type: [ "EdPiresW" ]
+  push:
+    branch: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
