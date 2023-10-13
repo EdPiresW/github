@@ -21,9 +21,8 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: env
-      - name: ru
-        run: which gh
+        run: echo Hello, world!
+
       # # passing the secret to an action
       # - name: Pass the received secret to an action
       #   uses: ./.github/actions/my-action
@@ -31,6 +30,8 @@ jobs:
       #     token: ${{ secrets.access-token }}
 
       # Runs a set of commands using the runners shell
-      # - name: Run a multi-line script
-      #   run: gh issue comment ${{ github.event.issue.html_url }} --body "Thank you for opening this issue!"
-
+      - name: Run a multi-line script
+        run: gh issue create --title "Issue report" --body "Thank you for opening this issue!" --repo $GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
