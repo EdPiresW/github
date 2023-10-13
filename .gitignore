@@ -1,0 +1,4 @@
+__pycache__
+*jwt/
+*generate_jwt.py
+*Inspect_app.py
