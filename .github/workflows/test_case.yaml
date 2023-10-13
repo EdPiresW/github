@@ -26,6 +26,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          echo $GITHUB_TOKEN
+          GH_TOKEN=$GITHUB_TOKEN
           gh api \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
