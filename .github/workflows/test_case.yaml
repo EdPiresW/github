@@ -23,16 +23,15 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # passing the secret to an action
-      - name: Pass the received secret to an action
-        uses: ./.github/actions/my-action
-        with:
-          token: ${{ secrets.access-token }}
+      # # passing the secret to an action
+      # - name: Pass the received secret to an action
+      #   uses: ./.github/actions/my-action
+      #   with:
+      #     token: ${{ secrets.access-token }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: |
-          gh api \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/EdPiresW/github/releases/latest
+        run: gh issue comment $ISSUE --body "Thank you for opening this issue!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
